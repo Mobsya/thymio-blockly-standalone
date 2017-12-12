@@ -5,8 +5,7 @@ Thymio Blockly Standalone
 Usage
 =====
 
-1. Run `build.py` in the blockly repository. You will need python 2.7 or greater.
-2. Open index.html in your browser.
+To launch the Thymio/Blockly Web app, simply open index.html in your browser.
 
 This applications requires the `Web Bridge` (aka `asebahttp`) to be launched separately.
 
