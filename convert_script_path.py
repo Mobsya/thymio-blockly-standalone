@@ -10,7 +10,7 @@ FILE_MAPPING = {
 	r"^\.\./blockly/generators/([a-z]+)(?:/.+)?\.js" : r"js/\1_compressed.js",
 	r"^\.\./blockly/overrides/.+\.js"  : "js/overrides_compressed.js",
 	r"^\.\./blockly/blockly_uncompressed\.js" : "js/blockly_compressed.js",
-	r"^\.\./blockly/msg/js/([a-z]{2}).js" : r"js/i18n/\1.js"
+	r"^\.\./blockly/msg/js/([a-z]{2}).js" : r"js/i18n/\1.js",
 	r"^\.\./blockly/msg/messages.js" : r"js/i18n/en.js"
 }
 
