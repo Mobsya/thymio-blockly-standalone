@@ -100,7 +100,6 @@ function start() {
                     aeslLoaded = xmlDoc.getElementsByTagName("node")[0].childNodes[0].nodeValue;
                     xmlDoc = xmlDoc.getElementsByTagName("node")[0].childNodes[1];
                     xmlDoc = xmlDoc.getElementsByTagName("ThymioBlockly")[0];
-                    //var xml = Blockly.Xml.textToDom(xmlDoc.getElementsByTagName("xml")[0]);
                     Blockly.Xml.domToWorkspace(workspace, xmlDoc.getElementsByTagName("xml")[0]);
                     var fileLoaded = document.getElementById("fileLoaded");
                     var showFileName = document.getElementById("showFileName");
@@ -110,7 +109,7 @@ function start() {
                 fileReader.readAsText(fileToLoad, "UTF-8");
             }
         }
-        //to close overlay
+    //to close overlay
     document.getElementById('overlay-msg')
         .addEventListener('click', function(event) {
             document.getElementById("overlay").style.display = "none";
@@ -119,6 +118,7 @@ function start() {
         .addEventListener('click', function(event) {
             document.getElementById("overlay").style.display = "none";
         });
+        
     mgr = new goog.net.XhrManager(2, null, 0, 2);
     //to test if Thymio is connected from the start 
     mgr.send('testCon', 'http://localhost:3000/nodes/', 'GET', null, null, null, function(e) {
@@ -255,7 +255,7 @@ function stop() {
             console.log("ko");
             document.getElementById("overlay").style.display = "block";
         }
-    }, 'GET');
+    });
 }
 
 function newDoc() {
