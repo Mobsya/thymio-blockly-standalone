@@ -1,0 +1,14 @@
+<html>
+<head>
+<script>
+var userLang = navigator.language || navigator.userLanguage;
+userLang = userLang.substring(0,2)
+
+if ( ["de", "en", "es", "fr", "it"].indexOf( userLang ) == -1)
+    userLang = "en"
+window.location.replace("./data/thymio_blockly." + userLang + ".html")
+</script>
+<body>
+Redirecting...
+</body>
+<html>
