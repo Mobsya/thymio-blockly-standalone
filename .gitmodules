@@ -1,6 +1,8 @@
 [submodule "blockly"]
 	path = blockly
-	url =  https://github.com/aseba-community/thymio-blockly-standalone.git
+	url = https://github.com/aseba-community/blockly.git
+	branch = master
 [submodule "closure-library"]
 	path = closure-library
-	url = https://github.com/google/closure-library.git
+	url = https://github.com/google/closure-library
+	branch = master
