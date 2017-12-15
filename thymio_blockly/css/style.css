@@ -10,6 +10,15 @@ h1 {
   font-weight: normal;
   font-size: 140%;
 }
+
+p {
+    font-family: 'Verdana';
+    font-size: 14px;
+    line-height: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
 #blocklyDiv {
   float: right;
   height: 95%;
@@ -77,9 +86,8 @@ div#btn-menu {
     margin-right:5px;
 }
 
-.top-option-btn:hover {
-    width:35px;
-    padding-right: 5px;
+.input-file:hover, a#info-btn:hover {
+    opacity: 0.8;
 }
 
 a#info-btn {
@@ -88,7 +96,10 @@ a#info-btn {
     border-left: 1px solid #efefef;
     display: inline-block;
     margin-right: 80px;
+    width: 40px;
 }
+
+
 
 /*structure*/
 #blocklyDiv {
@@ -269,6 +280,149 @@ img.warnIcon {
     vertical-align: middle;
     margin-left: 20px;
 }
+
+/*tabs*/
+
+.tabs .tabs-wrap {
+    margin-bottom: 30px;
+}
+
+div#tab-overlay {
+    position: fixed;
+    background: rgba(0,0,0,0.7);
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /*display:none;*/
+}
+
+.tabs.tabs-full {
+    width: 600px;
+    margin: 0 auto;
+    background: #eee;
+    margin-top: 10%;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    box-shadow: 0px 3px 9px rgba(0,0,0,0.3);
+}
+
+.tabs h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.tab h3 {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    padding: 0;
+}
+
+.tab ul {
+    list-style: none;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+.tab li {
+    font-family: verdana;
+    font-size: 14px;
+    line-height: 1.3em;
+}
+
+.tabs .tab-input {
+    display: none;
+}
+
+.tabs .tab-label {
+    color: #828282;
+    cursor: pointer;
+    float: left;
+    padding: 1em;
+    text-align: center;
+}
+
+.tabs-full .tab-label {
+    display: table-cell;
+    float: none;
+    width: 1%;
+    font-size: 14px;
+}
+
+.tabs .tab-label:hover {
+    color: #fff;
+    background: #558fe8;
+}
+
+.tabs .tab-input:checked + .tab-label {
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.tabs .tabs-wrap {
+    clear: both;
+}
+
+.tabs .tab {
+    background-color: #fff;
+    display: none;
+    padding: 1em;
+}
+
+.tabs .tab > *:last-child {
+    margin-bottom: 0;
+}
+
+#tab1:checked ~ .tabs-wrap #tab1content,
+#tab2:checked ~ .tabs-wrap #tab2content,
+#tab3:checked ~ .tabs-wrap #tab3content {
+    display: block;
+}
+
+.tabs img {
+    width: 110px;
+    margin-bottom: 20px;
+}
+
+a.button {
+    padding: 10px 20px;
+    background: #558fe8;
+    clear: both;
+    color: white;
+    text-decoration: none;
+}
+
+a.button:hover {
+    background: #0f408c;
+}
+
+div#appinfo {
+    display: inline-block;
+}
+
+#appinfo::after{
+  clear:both;
+}
+
+#appinfo img {
+  float:left;
+
+}
+#appinfo h3 {
+    float: left;
+    line-height: 110px;
+    margin-left: 20px;
+    color: #444;
+}
+
 /*lower resolutions*/
 
 @media screen and (max-width: 1270px) {
