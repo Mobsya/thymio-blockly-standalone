@@ -1,6 +1,13 @@
+goog.require('goog.dom');
+goog.require('goog.net.XhrIo');
+goog.require('goog.structs.Map');
+goog.require('goog.Uri.QueryData');
+goog.require('goog.net.XhrManager');
+
 'use strict';
 var workspace = null;
 var connected = false;
+var mgr = null;
 
 function start() {
     var toolbox = document.getElementById('toolbox');
@@ -30,14 +37,14 @@ function start() {
             scaleSpeed: 1.1
         },
     });
-    
+
     //to change code in the textarea real time
     if (Blockly.Realtime.isEnabled()) {
         enableRealtimeSpecificUi();
     }
     workspace.addChangeListener(updateCode);
 
-	//to load code and block from a aesl file using drag and drop
+    //to load code and block from a aesl file using drag and drop
     var importExport = document.getElementById('importExport');
 
     importExport.ondragover = function() {
@@ -52,7 +59,7 @@ function start() {
         var fileToLoad = e.dataTransfer.files[0],
             fileReader = new FileReader();
         fileReader.onload = function(fileLoadedEvent) {
-        	newDoc();
+            newDoc();
             var textFromFileLoaded = fileLoadedEvent.target.result;
             var parser, xmlDoc
             if (window.DOMParser) {
@@ -84,13 +91,13 @@ function start() {
         return false;
     };
 
-	//to load code and block from a aesl file
+    //to load code and block from a aesl file
     var input = document.getElementById("open-doc");
     input.onchange = function() {
         var fileToLoad = document.getElementById("open-doc").files[0];
 
         if (fileToLoad != null) {
-        	newDoc();
+            newDoc();
             var fileReader = new FileReader();
             fileReader.onload = function(fileLoadedEvent) {
                 var textFromFileLoaded = fileLoadedEvent.target.result;
@@ -107,11 +114,11 @@ function start() {
 
                 var aeslLoaded = document.getElementById('importExport');
                 aeslLoaded = xmlDoc.getElementsByTagName("node")[0].childNodes[0].nodeValue;
-				
+
                 xmlDoc = xmlDoc.getElementsByTagName("node")[0].childNodes[1];
-                
+
                 xmlDoc = xmlDoc.getElementsByTagName("ThymioBlockly")[0];
-                
+
 
                 //var xml = Blockly.Xml.textToDom(xmlDoc.getElementsByTagName("xml")[0]);
                 Blockly.Xml.domToWorkspace(workspace, xmlDoc.getElementsByTagName("xml")[0]);
@@ -125,19 +132,23 @@ function start() {
             fileReader.readAsText(fileToLoad, "UTF-8");
         }
     }
-    
+
     //to close overlay
     document.getElementById('overlay-msg')
-        .addEventListener('click', function (event) {
-             document.getElementById("overlay").style.display = "none";
+        .addEventListener('click', function(event) {
+            document.getElementById("overlay").style.display = "none";
         });
     document.getElementById('overlay')
-        .addEventListener('click', function (event) {
-             document.getElementById("overlay").style.display = "none";
+        .addEventListener('click', function(event) {
+            document.getElementById("overlay").style.display = "none";
         });
 
-	//to test if Thymio is connected from the start 
-    goog.net.XhrIo.send('http://localhost:3000/nodes/', function(e) {
+    mgr = new goog.net.XhrManager(2, null, 0, 2);
+
+
+    //to test if Thymio is connected from the start 
+    mgr.send('testCon', 'http://localhost:3000/nodes/', 'GET', null, null, null, function(e) {
+
         var response = this.getResponseText();
         if (response != '' && response != '[]') {
 
@@ -159,7 +170,7 @@ function start() {
         if (!connected) {
             console.log('not connected');
         }
-    }, 'GET');
+    });
 
 }
 
@@ -167,7 +178,8 @@ function start() {
 function testConnection() {
     console.log('testConnection');
     setTimeout(function() {
-        goog.net.XhrIo.send('http://localhost:3000/nodes/', function(e) {
+        mgr.abort('testCon');
+        mgr.send('testCon', 'http://localhost:3000/nodes/', 'GET', null, null, null, function(e) {
             if (connected) {
 
                 var response = this.getResponseText();
@@ -188,7 +200,7 @@ function testConnection() {
                     document.getElementById("overlay").style.display = "block";
                 }
             }
-        }, 'GET');
+        });
     }, 5000);
 
 }
@@ -206,10 +218,6 @@ function updateCode(event) {
 
 
 
-goog.require('goog.dom');
-goog.require('goog.net.XhrIo');
-goog.require('goog.structs.Map');
-goog.require('goog.Uri.QueryData');
 
 
 function run() {
@@ -220,8 +228,8 @@ function run() {
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&apos;');
-        
-    
+
+
 
     var aesl = '<!DOCTYPE aesl-source> \
 		<network> \
@@ -234,7 +242,8 @@ function run() {
     var payload = 'file=' + aesl;
 
 
-    goog.net.XhrIo.send('http://localhost:3000/nodes/', function(e) {
+    mgr.abort('testCon');
+    mgr.send('testCon', 'http://localhost:3000/nodes/', 'GET', null, null, null, function(e) {
 
         var response = this.getResponseText();
         if (this.getResponseText() != '' && this.getResponseText() != '[]') {
@@ -242,16 +251,17 @@ function run() {
             console.log(response);
             response = JSON.parse(response);
             if (response.connected == 1) {
-            	
+
                 console.log("ok");
-                if(!connected){
-                	 connected = true;
-                	 testConnection();
+                if (!connected) {
+                    connected = true;
+                    testConnection();
                 }
-               if(code!=''){
-                	goog.net.XhrIo.send('http://localhost:3000/nodes/thymio-II', function(e) {
-                    	console.log('Received response.');
-                	}, 'PUT', aesl);
+                mgr.abort('run');
+                if (code != '') {
+                    mgr.send('run', 'http://localhost:3000/nodes/thymio-II', 'PUT', aesl, null, null, function(e) {
+                        console.log('Received response.');
+                    });
                 }
             }
         }
@@ -260,9 +270,9 @@ function run() {
             console.log("ko");
             document.getElementById("overlay").style.display = "block";
         }
-    }, 'GET', 2000);
+    });
 
-	
+
 }
 
 
@@ -281,23 +291,25 @@ function stop() {
 
 
     var payload = 'file=' + aesl;
+    mgr.abort('testCon');
+    mgr.send('testCon', 'http://localhost:3000/nodes/', 'GET', null, null, null, function(e) {
 
-    goog.net.XhrIo.send('http://localhost:3000/nodes/', function(e) {
         var response = this.getResponseText();
-       
+
         if (this.getResponseText() != '' && this.getResponseText() != '[]') {
             response = response.substring(1, response.length - 1);
             console.log(response);
             response = JSON.parse(response);
             if (response.connected == 1) {
                 console.log("ok");
-                if(!connected){
-                	 connected = true;
-                	 testConnection();
+                if (!connected) {
+                    connected = true;
+                    testConnection();
                 }
-                goog.net.XhrIo.send('http://localhost:3000/nodes/thymio-II', function(e) {
+                mgr.abort('run');
+                mgr.send('run', 'http://localhost:3000/nodes/thymio-II', 'PUT', aesl, null, null, function(e) {
                     console.log('Received response.');
-                }, 'PUT', aesl);
+                });
             }
         }
 
@@ -328,13 +340,13 @@ function newDoc() {
 function saveFile() {
 
 
-	var code=document.getElementById("importExport").value.replace(/&/g, '&amp;')
+    var code = document.getElementById("importExport").value.replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&apos;');
-        
-        
+
+
     var xml = Blockly.Xml.workspaceToDom(workspace);
     var textToSave = '<!DOCTYPE aesl-source>\n<network>\n\n<!--list of global events-->\n\n<!--list of constants-->\n\n<!--show keywords state-->\n<keywords flag="true"/>\n\n\<!--node thymio-II-->\n<node nodeId="51938" name="thymio-II">\n\n' +
         code + '\n\n<toolsPlugins>\n<ThymioBlockly>\n' +
