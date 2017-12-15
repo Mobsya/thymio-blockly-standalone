@@ -295,7 +295,7 @@ div#tab-overlay {
     bottom: 0;
     right: 0;
     left: 0;
-    /*display:none;*/
+    display:none;
 }
 
 .tabs.tabs-full {
