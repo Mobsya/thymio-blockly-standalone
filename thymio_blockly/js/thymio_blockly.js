@@ -118,6 +118,18 @@ function start() {
         .addEventListener('click', function(event) {
             document.getElementById("overlay").style.display = "none";
         });
+    document.getElementById('closeAbout')
+        .addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById("tab-overlay").style.display = "none";
+        });
+
+    //to open about us tab
+    document.getElementById('info-btn')
+        .addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById("tab-overlay").style.display = "block";
+        });
 
     mgr = new goog.net.XhrManager(2, null, 0, 2);
     //to test if Thymio is connected from the start 

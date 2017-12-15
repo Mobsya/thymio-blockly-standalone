@@ -47,6 +47,59 @@
           </div>
         </div>
       </div>
+      <div id="tab-overlay">
+        <div class="tabs tabs-full">
+          <div id="appinfo">
+            <img src="../media/thymio-blockly-icon.png">
+            <h3>Thymio Blockly</h3>
+          </div>
+          
+          <input id="tab1" type="radio" name="tabs" class="tab-input" checked />
+          <label for="tab1" class="tab-label">About</label>
+          <input id="tab2" type="radio" name="tabs" class="tab-input" />
+          <label for="tab2" class="tab-label">Authors</label>
+          <input id="tab3" type="radio" name="tabs" class="tab-input" />
+          <label for="tab3" class="tab-label">Thanks to</label>
+          
+          <div class="tabs-wrap">
+            <div class="tab" id="tab1content">
+              <h3>Thymio Blockly is an environment for interactively programming Thymio robots with Blockly language.</h3>
+              <p>More information about <a target="_blank" href="https://developers.google.com/blockly/">Blockly</a> language.</p>
+              <p>More information about <a target="_blank" href="https://www.thymio.org/en:blocklyprogramming">Thymio Blockly.</a></p>
+            </div>
+            <div class="tab" id="tab2content">
+              <h3>Thymio Blockly authors</h3>
+              <ul>
+                <li>Fabian Hahn</li>
+                <li>Elisa Bernardoni</li>
+                <li>Vincent Becker</li>
+                <li>Maria María Beltrán</li>
+                <li>Stéphane Magnenat</li>
+              </ul>
+              <h3>Based on Aseba by</h3>
+              <ul>
+                <li>Stéphane Magnenat</li>
+                <li>David Sherman</li>
+                <li>Florian Vaussard</li>
+                <li>Philippe Rétornaz</li>
+              </ul>
+            </div>
+            <div class="tab" id="tab3content">
+              <ul>
+                <li>Michael Bonani</li>
+                <li>Corentin Jabot</li>
+                <li>EPFL-Mobots</li>
+                <li>Mobsya</li>
+                <li>Inria</li>
+                <li>Other translators</li>
+              </ul>
+            </div>
+          </div>
+          <p class="button-container">
+            <a class="button" id="closeAbout" href="#">Close</a>
+          </p>
+        </div>
+      </div>
     <!-- end overlay -->
       <div id="header">
         <div id="logo-zone">
@@ -83,12 +136,12 @@
               </div>
               <div class="input-file">
                 <label for="stop">
-                  <img class="top-option-btn" src="../media/stop.svg" alt="Arrêter" title="Arrêter"/>
+                  <img class="top-option-btn" src="../media/stop.svg" alt="Stop" title="Stop"/>
                 </label>
                 <input type="button" id="stop" onclick="stop()"/>
               </div>
               <!-- end right button menu -->
-              <a id="info-btn" href="https://www.thymio.org/es:blocklyprogramming" target="_blank">
+              <a id="info-btn" href="">
                 <img src="../media/info.svg" alt="Ayuda" title="Ayuda"/>
               </a>
               <ul class="lang">
