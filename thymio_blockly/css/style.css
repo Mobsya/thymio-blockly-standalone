@@ -82,8 +82,9 @@ div#btn-menu {
 
 .top-option-btn {
     transition: 0.1s ease all;
-    width:40px;
-    margin-right:5px;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
 }
 
 .input-file:hover, a#info-btn:hover {
