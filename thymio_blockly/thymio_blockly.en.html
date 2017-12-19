@@ -36,11 +36,11 @@
           <div id="overlay-msg-content">
           <ul>
             <li>
-              <p> <span>1.</span>Connect Thymio to your computer with the USB cable or the Wireless dongle.</p>
+              <p><span>1.</span>Connect Thymio to your computer with the USB cable or the Wireless dongle.</p>
               <img src="../media/dongle-icon.png" class="warnIcon">
             </li>
             <li>
-              <span>2.</span> Make sure that Thymio Web Bridge is active.
+              <p><span>2.</span> Make sure that Thymio Web Bridge is active.</p>
               <img src="../media/web-bridge-icon.png" class="warnIcon">
             </li>
           </ul>
@@ -66,6 +66,7 @@
               <h3>Thymio Blockly is an environment for interactively programming Thymio robots with Blockly language.</h3>
               <p>More information about <a target="_blank" href="https://developers.google.com/blockly/">Blockly</a> language.</p>
               <p>More information about <a target="_blank" href="https://www.thymio.org/en:blocklyprogramming">Thymio Blockly.</a></p>
+              <p>Thymio Blockly is based on the Aseba technology, learn more on <a target="_blank" href="http://www.aseba.io">aseba.io</a></p>
             </div>
             <div class="tab" id="tab2content">
               <h3>Thymio Blockly authors</h3>
@@ -102,65 +103,68 @@
       </div>
     <!-- end overlay -->
       <div id="header">
-        <div id="logo-zone">
-          <img id="thymio-logo" src="../media/logo-thymio.png">
-            <h1 id="logo-text">Thymio Blockly</h1>
-          </div>
-          <!-- right button menu -->
-          <div id="btn-menu">
-            <input type="hidden" id="fileLoaded">
-              <div class="input-file">
+        <div id="btn-menu">
+            <!-- START left buttons -->
+            <div id="leftButtons">
+              <input type="hidden" id="fileLoaded">
+                <div class="input-file">
                 <label for="new-doc">
                   <img class="top-option-btn" src="../media/new.svg" alt="New" title="New"/>
                 </label>
                 <input id="new-doc" type="image" onclick="newDoc()"/>
+                </div>
+                <div class="input-file">
+                  <label for="open-doc">
+                    <img class="top-option-btn" src="../media/open.svg" alt="Open" title="Open"/>
+                  </label>
+                  <input type="file" id="open-doc"/>
+                </div>
+                <div class="input-file">
+                  <label for="save-doc">
+                    <img class="top-option-btn" src="../media/save.svg" alt="Save" title="Save"/>
+                  </label>
+                  <input type="image" id="save-doc" onclick="saveFile()"/>
+                </div>
               </div>
-              <div class="input-file">
-                <label for="open-doc">
-                  <img class="top-option-btn" src="../media/open.svg" alt="Open" title="Open"/>
-                </label>
-                <input type="file" id="open-doc"/>
+              <!-- END Left buttons - START center buttons -->
+              <div id="centerButtons">
+                <div class="input-file">
+                  <label for="play">
+                    <img class="top-option-btn" src="../media/play.svg" alt="Load & Run" title="Load & Run"/>
+                  </label>
+                  <input type="button" id="play" onclick="run()"/>
+                </div>
+                <div class="input-file">
+                  <label for="stop">
+                    <img class="top-option-btn" src="../media/stop.svg" alt="New" title="Stop"/>
+                  </label>
+                  <input type="button" id="stop" onclick="stop()"/>
+                </div>
               </div>
-              <div class="input-file">
-                <label for="save-doc">
-                  <img class="top-option-btn" src="../media/save.svg" alt="Save" title="Save"/>
-                </label>
-                <input type="image" id="save-doc" onclick="saveFile()"/>
+              <!-- END Center buttons - START right buttons -->
+              <div id="rightButtons">
+                <a id="info-btn" class="top-option-btn" href="" target="_blank">
+                  <img src="../media/info.svg" alt="Help" title="Help"/>
+                </a>
+                <ul class="lang">
+                	<a href="thymio_blockly.en.html">
+                    <li>EN</li>
+                  </a>
+                  <a href="thymio_blockly.fr.html">
+                    <li>FR</li>
+                  </a>
+                  <a href="thymio_blockly.it.html">
+                    <li>IT</li>
+                  </a>
+                  <a href="thymio_blockly.de.html">
+                    <li>DE</li>
+                  </a>
+                  <a href="thymio_blockly.es.html">
+                    <li>ES</li>
+                  </a>
+                </ul>
               </div>
-              <div class="input-file">
-                <!-- input type button sample -->
-                <label for="play">
-                  <img class="top-option-btn" src="../media/play.svg" alt="Load & Run" title="Load & Run"/>
-                </label>
-                <input type="button" id="play" onclick="run()"/>
-              </div>
-              <div class="input-file">
-                <label for="stop">
-                  <img class="top-option-btn" src="../media/stop.svg" alt="New" title="Stop"/>
-                </label>
-                <input type="button" id="stop" onclick="stop()"/>
-              </div>
-              <!-- end right button menu -->
-              <a id="info-btn" href="https://www.thymio.org/en:blocklyprogramming" target="_blank">
-                <img src="../media/info.svg" alt="Help" title="Help"/>
-              </a>
-              <ul class="lang">
-              	<a href="thymio_blockly.en.html">
-                  <li>EN</li>
-                </a>
-                <a href="thymio_blockly.fr.html">
-                  <li>FR</li>
-                </a>
-                <a href="thymio_blockly.it.html">
-                  <li>IT</li>
-                </a>
-                <a href="thymio_blockly.de.html">
-                  <li>DE</li>
-                </a>
-                <a href="thymio_blockly.es.html">
-                  <li>ES</li>
-                </a>
-              </ul>
+              <!-- END right buttons -->
             </div>
           </div>
           <div id="blocklyDiv"></div>
@@ -556,9 +560,13 @@
             <category name="Variables" colour="330" custom="VARIABLE"></category>
             <category name="Subroutines" colour="290" custom="PROCEDURE"></category>
         	</xml>
-        <div id="aseba-zone">
-            <textarea id="importExport" style="/*width: 26%; */ height: 36em" readonly="readonly"></textarea>
-            <div id="showFileName"></div>
-        </div>
+          <div id="logo-zone">
+          <img id="thymio-logo" src="../media/logo-thymio.png">
+            <h1 id="logo-text">Blockly</h1>
+          </div>
+          <div id="aseba-zone">
+              <textarea id="importExport" style="/*width: 26%; */ height: 36em" readonly="readonly"></textarea>
+              <div id="showFileName"></div>
+          </div>
     </body>
 </html>
