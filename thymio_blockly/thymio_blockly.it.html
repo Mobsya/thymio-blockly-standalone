@@ -40,7 +40,7 @@
               <img src="../media/dongle-icon.png" class="warnIcon">
             </li>
             <li>
-              <span>2.</span> Assicurarsi che il programma Thymio Web Bridge sia attivo.
+              <p><span>2.</span> Assicurarsi che il programma Thymio Web Bridge sia attivo.</p>
               <img src="../media/web-bridge-icon.png" class="warnIcon">
             </li>
           </ul>
@@ -103,12 +103,9 @@
       </div>
     <!-- end overlay -->
       <div id="header">
-        <div id="logo-zone">
-          <img id="thymio-logo" src="../media/logo-thymio.png">
-            <h1 id="logo-text">Thymio Blockly</h1>
-          </div>
-          <!-- right button menu -->
           <div id="btn-menu">
+          <!-- START left buttons -->
+          <div id="leftButtons">
             <input type="hidden" id="fileLoaded">
               <div class="input-file">
                 <label for="new-doc">
@@ -128,8 +125,10 @@
                 </label>
                 <input type="image" id="save-doc" onclick="saveFile()"/>
               </div>
+            </div>
+            <!-- END Left buttons - START center buttons -->
+            <div id="centerButtons">
               <div class="input-file">
-                <!-- input type button sample -->
                 <label for="play">
                   <img class="top-option-btn" src="../media/play.svg" alt="Carica ed esegui" title="Carica ed esegui"/>
                 </label>
@@ -141,8 +140,10 @@
                 </label>
                 <input type="button" id="stop" onclick="stop()"/>
               </div>
-              <!-- end right button menu -->
-              <a id="info-btn" href="https://www.thymio.org/it:blocklyprogramming" target="_blank">
+            </div>
+            <!-- END Center buttons - START right buttons -->
+            <div id="rightButtons">
+              <a id="info-btn" class="top-option-btn" href="" target="_blank">
                 <img src="../media/info.svg" alt="Aiuto" title="Aiuto"/>
               </a>
               <ul class="lang">
@@ -162,6 +163,8 @@
                   <li>ES</li>
                 </a>
               </ul>
+            </div>
+            <!-- END right buttons -->
             </div>
           </div>
           <div id="blocklyDiv"></div>
@@ -557,9 +560,13 @@
             <category name="Variabili" colour="330" custom="VARIABLE"></category>
             <category name="Sottoprogrammi" colour="290" custom="PROCEDURE"></category>
         	</xml>
-        <div id="aseba-zone">
-            <textarea id="importExport" style="/*width: 26%; */ height: 36em" readonly="readonly"></textarea>
-            <div id="showFileName"></div>
-        </div>
+          <div id="logo-zone">
+            <img id="thymio-logo" src="../media/logo-thymio.png">
+            <h1 id="logo-text">Blockly</h1>
+          </div>
+          <div id="aseba-zone">
+              <textarea id="importExport" style="/*width: 26%; */ height: 36em" readonly="readonly"></textarea>
+              <div id="showFileName"></div>
+          </div>
     </body>
 </html>
