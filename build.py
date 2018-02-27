@@ -45,7 +45,7 @@ def replace_node_path(dom):
 			node_path = node.get("src")
 			found.add(node_path)
 			if re.match(pattern, node_path):
-				print(node.get(node_path), replacement)
+				#print(node.get(node_path), replacement)
 				res = re.sub(pattern, replacement, node_path)
 				if res in found:
 					node.decompose()
@@ -67,13 +67,9 @@ def mkdir_p(path):
     try:
         os.makedirs(path)
     except OSError as exc:  # Python >2.5
-        if exc.errno == errno.EEXIST and os.path.isdir(path):
-            pass
-        else:
-            raise
+        pass
 
 def remove_temp_dir(dir):
-	pass
 	shutil.rmtree(dir)
 
 if __name__ == '__main__':
@@ -84,10 +80,10 @@ if __name__ == '__main__':
 	options = parser.parse_args()
 
 	dest = options.dir
+	mkdir_p(dest)
 	dirpath = tempfile.mkdtemp()
-	print(dirpath)
 	import atexit
-	#atexit.register(remove_temp_dir, dirpath)
+	atexit.register(remove_temp_dir, dirpath)
 
 	for name in ["blockly", "closure-library", "thymio_blockly", "index.html", "media"]:
 		node = os.path.join(DIR, name)
@@ -131,6 +127,5 @@ if __name__ == '__main__':
 	else:
 		target = os.path.join(dest, "thymio-blockly-standalone")
 		if os.path.isdir(target):
-			print(target)
 			shutil.rmtree(target)
-		shutil.move(dest, options.dir)
+		shutil.move(os.path.join(dirpath, "thymio-blockly-standalone"), target)
