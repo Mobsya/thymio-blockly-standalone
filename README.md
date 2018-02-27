@@ -15,8 +15,13 @@ Deployment
 ==========
 
 1. Install the python package `BeautifulSoup` version 4 ( `pip install beautifulsoup4` )
-2. Run the `build.sh` script on a linux machine. It will create a redistribuable zip file in
-the current directory. You can provide a different path to the script aka `build.sh foo/bar.zip`.
+2. Run the `build.py` script.
+
+`build.py --dir  <directory>` create a packageed version in the given directory
+`build.py --zip  <archive>` create an archive containing the packaged version
+
+Without argument, the script will create a package folder in the current directory.
+
 Be aware that the script will make requests to closure-compiler.appspot.com:443 ( https ).
 The packaged version can be launcher through the index.html file at the root of the extracted package.
 
