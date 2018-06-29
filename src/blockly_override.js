@@ -1,11 +1,11 @@
 'use strict';
-
+var Blockly = require('@mobsya/node-blockly/browser');
 
 Blockly.Names.prototype.safeName_ = function(name) {
   if (!name) {
     name = 'unnamed';
   } else {
-   
+
 	name=name.replace(/ /g, '_').replace(/[^\wâäèéêëîïôœùûüÿçÀÂÄÈÉÊËÎÏÔŒÙÛÜŸÇ_.]+/g, '_');
 	if ('0123456789'.indexOf(name[0]) != -1) {
       name = '_' + name;

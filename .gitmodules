@@ -2,7 +2,3 @@
 	path = blockly
 	url = https://github.com/mobsya/blockly.git
 	branch = master
-[submodule "closure-library"]
-	path = closure-library
-	url = https://github.com/google/closure-library
-	branch = master
