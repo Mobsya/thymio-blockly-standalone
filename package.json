@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@mobsya/node-blockly": "^1.1.3",
-    "@mobsya/thymio-api": "^0.1.7",
+    "@mobsya/thymio-api": "^0.2.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-polyfill": "^6.26.0",

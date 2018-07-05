@@ -20,10 +20,10 @@ $().ready(function() {
         for (let node of nodes) {
             console.log(`${node.id} : ${node.status_str}`)
             // Select the first non busy node
-            if((!selectedNode || selectedNode.disconnected) && node.status == Node.Status.ready) {
+            if((!selectedNode || !selectedNode.ready) && node.status == Node.Status.available) {
                 try {
-                    await node.lock()
                     selectedNode = node
+                    await node.lock()
                 } catch(e) {
                     console.log("Unable to lock the node")
                 }
@@ -135,7 +135,7 @@ function start() {
 }
 
 function update_overlay_status() {
-    if(selectedNode && !selectedNode.disconnected)
+    if(selectedNode && selectedNode.ready)
         $('#overlay').hide()
     else
         $('#overlay').show()
@@ -147,7 +147,7 @@ function updateCode() {
 }
 
 async function send_code(code) {
-    if(selectedNode && !selectedNode.disconnected) {
+    if(selectedNode && selectedNode.ready) {
         try {
             await selectedNode.send_aseba_program(code)
             await selectedNode.run_aseba_program()

@@ -1,7 +1,5 @@
-const path = require('path');
 const webpack = require('webpack');
-const exec = require('child_process').execFile;
-//const HtmlWebpackPlugin = require('html-webpack-plugin');
+const babelenv = require('babel-preset-env');
 
 const browserConfig = {
     entry : [
@@ -23,19 +21,21 @@ const browserConfig = {
     },
     module: {
         rules: [
-//             {
-//                 enforce: "pre",
-//                 test: /\/src\/.*\.js$/,
-//                 exclude: /node_modules/,
-//                 loader: "eslint-loader",
-//             },
             {
                 test:  /\/src\/.*\.js$/,
                 loader: 'babel-loader',
+                exclude: /(node_modules\/babel-polyfill)/,
                 options: {
-                    presets: ['env']
-                },
-                exclude: /node_modules/
+                    presets: [
+                        [
+                            babelenv , {
+                                "targets": {
+                                    "browsers": ["> 3%", "ie >= 10"]
+                                }
+                            }
+                        ]
+                    ]
+                }
             }
         ]
     },
