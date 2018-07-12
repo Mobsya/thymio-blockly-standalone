@@ -12,12 +12,26 @@ let client = undefined
 let selectedNode = undefined
 
 
-$().ready(function() {
+function connect() {
     //TODO: handle switch deconnection
     client = new Client("ws://localhost:8597");
+    client._socket.onclose =  (e) => {
+        console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
+        selectedNode = undefined
+        setTimeout( () => {
+            connect()
+        })
+      };
+    
+      client._socket.onerror = function(err) {
+        console.error('Socket encountered error: ', err.message, 'Closing socket');
+        ws.close();
+      };
+
+
     client.on_nodes_changed = async (nodes) => {
         //Iterate over the nodes
-        for (let node of nodes) {
+        for (let node of client.nodes()) {
             console.log(`${node.id} : ${node.status_str}`)
             // Select the first non busy node
             if((!selectedNode || !selectedNode.ready) && node.status == Node.Status.available) {
@@ -29,10 +43,21 @@ $().ready(function() {
                 }
             }
         }
+
+        let node_div = $("#listNodes")
+        node_div.empty()
+        for(let node of client.nodes()) {
+            node_div.append(`<li>${node.id} : ${node.status_str}</li>`);
+        }
+
         update_overlay_status()
     }
-    start()
     update_overlay_status()
+}
+
+$().ready( () => {
+    start()
+    connect()
 })
 
 function start() {
