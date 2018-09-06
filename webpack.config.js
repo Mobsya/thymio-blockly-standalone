@@ -20,24 +20,24 @@ const browserConfig = {
         watchContentBase: true
     },
     module: {
-        rules: [
-            {
-                test:  /\/src\/.*\.js$/,
-                loader: 'babel-loader',
-                exclude: /(node_modules\/babel-polyfill)/,
-                options: {
-                    presets: [
-                        [
-                            babelenv , {
-                                "targets": {
-                                    "browsers": ["> 3%", "ie >= 10"]
-                                }
-                            }
-                        ]
-                    ]
-                }
-            }
-        ]
+//         /*rules: [
+//             {
+//                 test:  /\/src\/.*\.js$/,
+//                 loader: 'babel-loader',
+//                 exclude: /(node_modules\/babel-polyfill)/,
+//                 options: {
+//                     presets: [
+//                         [
+//                             babelenv , {
+//                                 "targets": {
+//                                     "browsers": ["> 3%", "ie >= 10"]
+//                                 }
+//                             }
+//                         ]
+//                     ]
+//                 }
+//             }
+//         ]*/
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
