@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.0)
 
-find_program(NPM_EXECUTABLE NAMES npm)
+if(ANDROID)
+    find_host_program(NPM_EXECUTABLE NAMES npm)
+else()
+    find_program(NPM_EXECUTABLE NAMES npm)
+endif()
+
 if (NOT NPM_EXECUTABLE)
     message(FATAL_ERROR "Could not find npm")
 endif()
