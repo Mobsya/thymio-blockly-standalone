@@ -1,10 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-if(ANDROID)
-    find_host_program(NPM_EXECUTABLE NAMES npm)
-else()
-    find_program(NPM_EXECUTABLE NAMES npm)
-endif()
+find_program(NPM_EXECUTABLE NAMES npm NO_CMAKE_FIND_ROOT_PATH)
 
 if (NOT NPM_EXECUTABLE)
     message(FATAL_ERROR "Could not find npm")
@@ -19,7 +15,7 @@ add_custom_target(Blockly ALL DEPENDS ${timestamp_file2})
 
 add_custom_command(
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/package-lock.json
-    COMMAND ${NPM_EXECUTABLE} --verbose install
+    COMMAND ${NPM_EXECUTABLE} install
     COMMENT "Installing Blockly dependencies"
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     DEPENDS package.json
@@ -27,7 +23,8 @@ add_custom_command(
 
 add_custom_command(
     OUTPUT ${timestamp_file2}
-    COMMAND ${NPM_EXECUTABLE} --verbose run-script build && ${CMAKE_COMMAND} -E touch ${timestamp_file2}
+    COMMAND ${NPM_EXECUTABLE} --verbose run-script build
+    COMMAND ${CMAKE_COMMAND} -E touch ${timestamp_file2}
     COMMENT "Building Blockly"
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     DEPENDS package.json src/blockly_override.js src/thymio_blockly.js webpack.config.js package-lock.json ${timestamp_file}
