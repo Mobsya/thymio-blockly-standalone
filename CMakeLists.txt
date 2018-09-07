@@ -10,7 +10,12 @@ endif()
 set(timestamp_file ${CMAKE_CURRENT_BINARY_DIR}/timestamp.cmake)
 set(timestamp_file2 ${CMAKE_CURRENT_BINARY_DIR}/timestamp2.cmake)
 
-add_custom_target(Blockly ALL DEPENDS ${timestamp_file2})
+
+file(GLOB_RECURSE HTML_FILES "thymio_blockly/*.html" "thymio_blockly/*.css")
+
+add_custom_target(blockly ALL DEPENDS ${timestamp_file2}
+    SOURCES package.json src/blockly_override.js src/thymio_blockly.js webpack.config.js package-lock.json ${HTML_FILES}
+)
 
 
 add_custom_command(
