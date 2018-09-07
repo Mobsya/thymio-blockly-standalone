@@ -13,14 +13,14 @@ set(timestamp_file2 ${CMAKE_CURRENT_BINARY_DIR}/timestamp2.cmake)
 
 file(GLOB_RECURSE HTML_FILES "thymio_blockly/*.html" "thymio_blockly/*.css")
 
-add_custom_target(blockly ALL DEPENDS ${timestamp_file2}
+add_custom_target(blockly ALL DEPENDS ${timestamp_file2} ${timestamp_file}
     SOURCES package.json src/blockly_override.js src/thymio_blockly.js webpack.config.js package-lock.json ${HTML_FILES}
 )
 
 
 add_custom_command(
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/package-lock.json
-    COMMAND ${NPM_EXECUTABLE} install
+    COMMAND ${NPM_EXECUTABLE} install  --force
     COMMENT "Installing Blockly dependencies"
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     DEPENDS package.json
@@ -40,7 +40,7 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/thymio_blockly DESTINATION .)
 if(TARGET thymio-js-api)
     add_custom_command(
         OUTPUT ${timestamp_file}
-        COMMAND ${NPM_EXECUTABLE} --verbose install  $<TARGET_PROPERTY:thymio-js-api,SOURCE_DIR>
+        COMMAND ${NPM_EXECUTABLE} --force --verbose install  $<TARGET_PROPERTY:thymio-js-api,SOURCE_DIR>
         COMMAND ${CMAKE_COMMAND} -E touch ${timestamp_file}
         COMMENT "Installing mobsya-thymio-api"
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
