@@ -20,7 +20,7 @@ add_custom_target(blockly ALL DEPENDS ${timestamp_file2} ${timestamp_file}
 
 add_custom_command(
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/package-lock.json
-    COMMAND ${NPM_EXECUTABLE} install  --force
+    COMMAND ${NPM_EXECUTABLE} install
     COMMENT "Installing Blockly dependencies"
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     DEPENDS package.json
