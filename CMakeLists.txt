@@ -40,7 +40,7 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/thymio_blockly DESTINATION .)
 if(TARGET thymio-js-api)
     add_custom_command(
         OUTPUT ${timestamp_file}
-        COMMAND ${NPM_EXECUTABLE} --force install  $<TARGET_PROPERTY:thymio-js-api,ABSOLUTE_SOURCE_DIR>
+        COMMAND ${NPM_EXECUTABLE} install  $<TARGET_PROPERTY:thymio-js-api,ABSOLUTE_SOURCE_DIR>
         COMMAND ${CMAKE_COMMAND} -E touch ${timestamp_file}
         COMMENT "Installing mobsya-thymio-api"
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
