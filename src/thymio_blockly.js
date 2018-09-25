@@ -10,17 +10,31 @@ var workspace = null;
 
 let client = undefined
 let selectedNode = undefined
+let preferredNodeId = undefined
 
 
 $().ready(function() {
+    var params = {}
+    if( location.hash && location.hash.length ) {
+        const hash = decodeURIComponent(location.hash.substr(1));
+        hash.split('&').map(hk => {
+            let temp = hk.split('=');
+            params[temp[0]] = temp[1]
+        });
+    }
+    preferredNodeId = params["device"];
+    const connectionUrl = params["ws"] || "ws://localhost:8597"
+    console.log(`${connectionUrl} : ${preferredNodeId}`)
+
     //TODO: handle switch deconnection
-    client = new Client("ws://localhost:8597");
+    client = new Client(connectionUrl);
     client.on_nodes_changed = async (nodes) => {
         //Iterate over the nodes
         for (let node of nodes) {
-            console.log(`${node.id} : ${node.status_str}`)
+            console.log(`${node.id} : ${node.name} ${node.type_str}  ${node.status_str}`)
             // Select the first non busy node
-            if((!selectedNode || !selectedNode.ready) && node.status == Node.Status.available) {
+            if((!selectedNode || !selectedNode.ready)
+                && node.status == Node.Status.available && (!preferredNodeId || preferredNodeId == node.id)) {
                 try {
                     selectedNode = node
                     await node.lock()
