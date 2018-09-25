@@ -38,3 +38,4 @@ else()
         DEPENDS package.json $<TARGET_PROPERTY:thymio-js-api,DEPENDS> src/blockly_override.js src/thymio_blockly.js webpack.config.js
     )
 endif()
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/thymio_blockly DESTINATION .)
