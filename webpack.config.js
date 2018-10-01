@@ -12,6 +12,9 @@ const browserConfig = {
         path: __dirname + "/thymio_blockly/js/",
         publicPath: "js/"
     },
+    node: {
+        fs: "empty"
+    },
     devtool: 'sourcemap',
     mode: 'development',
     devServer: {
