@@ -28,13 +28,13 @@ $().ready(function() {
 
     //TODO: handle switch deconnection
     client = new Client(connectionUrl);
-    client.on_nodes_changed = async (nodes) => {
+    client.onNodesChanged = async (nodes) => {
         //Iterate over the nodes
         for (let node of nodes) {
-            console.log(`${node.id} : ${node.name} ${node.type_str}  ${node.status_str}`)
+            console.log(`${node.id} : ${node.name} ${node.typeAsString}  ${node.statusAsString}`)
             // Select the first non busy node
-            if((!selectedNode || !selectedNode.ready)
-                && node.status == Node.Status.available && (!preferredNodeId || preferredNodeId == node.id)) {
+            if((!selectedNode || !selectedNode.isReady)
+                && node.status == Node.Status.available && (!preferredNodeId || preferredNodeId == node.id.toString())) {
                 try {
                     selectedNode = node
                     await node.lock()
@@ -149,7 +149,7 @@ function start() {
 }
 
 function update_overlay_status() {
-    if(selectedNode && selectedNode.ready)
+    if(selectedNode && selectedNode.isReady)
         $('#overlay').hide()
     else
         $('#overlay').show()
@@ -161,10 +161,10 @@ function updateCode() {
 }
 
 async function send_code(code) {
-    if(selectedNode && selectedNode.ready) {
+    if(selectedNode && selectedNode.isReady) {
         try {
-            await selectedNode.send_aseba_program(code)
-            await selectedNode.run_aseba_program()
+            await selectedNode.sendAsebaProgram(code)
+            await selectedNode.runProgram()
         } catch (e) {
             console.log(e, code)
         }
