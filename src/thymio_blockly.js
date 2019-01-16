@@ -4,7 +4,7 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
 
-import {Client,Node} from '@mobsya/thymio-api'
+import {Client, Node, NodeStatus} from '@mobsya/thymio-api'
 
 var workspace = null;
 
@@ -34,7 +34,7 @@ $().ready(function() {
             console.log(`${node.id} : ${node.name} ${node.typeAsString}  ${node.statusAsString}`)
             // Select the first non busy node
             if((!selectedNode || !selectedNode.isReady)
-                && node.status == Node.Status.available && (!preferredNodeId || preferredNodeId == node.id.toString())) {
+                && node.status == NodeStatus.available && (!preferredNodeId || preferredNodeId == node.id.toString())) {
                 try {
                     selectedNode = node
                     await node.lock()
