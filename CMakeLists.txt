@@ -35,7 +35,7 @@ else()
         COMMAND ${CMAKE_COMMAND} -E touch ${timestamp_file}
         COMMENT "Building Blockly dependencies"
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-        DEPENDS package.json $<TARGET_PROPERTY:thymio-js-api,DEPENDS> src/blockly_override.js src/thymio_blockly.js webpack.config.js
+        DEPENDS package.json src/blockly_override.js src/thymio_blockly.js webpack.config.js
     )
 endif()
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/thymio_blockly DESTINATION .)
