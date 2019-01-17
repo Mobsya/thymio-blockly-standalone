@@ -20,12 +20,12 @@ if(TARGET thymio-js-api)
     add_custom_command(
         OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/package-lock.json ${timestamp_file}
         COMMAND ${NPM_EXECUTABLE} install
-        COMMAND ${NPM_EXECUTABLE} install  $<TARGET_PROPERTY:thymio-js-api,ABSOLUTE_SOURCE_DIR>
+        COMMAND ${NPM_EXECUTABLE} install  $<TARGET_PROPERTY:thymio-js-api,TARBALL>
         COMMAND ${NPM_EXECUTABLE} run-script build
         COMMAND ${CMAKE_COMMAND} -E touch ${timestamp_file}
         COMMENT "Building Blockly dependencies"
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-        DEPENDS package.json $<TARGET_PROPERTY:thymio-js-api,DEPENDS> src/blockly_override.js src/thymio_blockly.js webpack.config.js
+        DEPENDS package.json $<TARGET_PROPERTY:thymio-js-api,TARBALL> src/blockly_override.js src/thymio_blockly.js webpack.config.js
     )
 else()
     add_custom_command(

@@ -4,7 +4,7 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
 
-import {Client, Node, NodeStatus} from '@mobsya/thymio-api'
+import {createClient, Node, NodeStatus} from '@mobsya/thymio-api'
 
 var workspace = null;
 
@@ -27,7 +27,7 @@ $().ready(function() {
     console.log(`${connectionUrl} : ${preferredNodeId}`)
 
     //TODO: handle switch deconnection
-    client = new Client(connectionUrl);
+    client = createClient(connectionUrl);
     client.onNodesChanged = async (nodes) => {
         //Iterate over the nodes
         for (let node of nodes) {
