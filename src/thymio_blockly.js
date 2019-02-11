@@ -61,7 +61,7 @@ function start() {
             snap: true
         },
         maxBlocks: Infinity,
-        media: '../media/',
+        media: 'media/',
         readOnly: false,
         realtime: false,
         rtl: false,

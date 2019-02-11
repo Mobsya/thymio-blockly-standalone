@@ -3,46 +3,24 @@
   <head>
     <meta charset="utf-8">
       <title>Thymio Blockly</title>
-      <script src="../blockly/blockly_uncompressed.js"></script>
-      <script src="../blockly/overrides/subroutines.js"></script>
-      <script src="../blockly/overrides/arrayvariables.js"></script>
-      <script src="../blockly/generators/aesl.js"></script>
-      <script src="../blockly/generators/aesl/logic.js"></script>
-      <script src="../blockly/generators/aesl/math.js"></script>
-      <script src="../blockly/generators/aesl/thymio.js"></script>
-      <script src="../blockly/generators/aesl/loops.js"></script>
-      <script src="../blockly/generators/aesl/variables.js"></script>
-      <script src="../blockly/generators/aesl/procedures.js"></script>
-      <script src="../blockly/msg/js/de.js"></script>
-      <script src="../blockly/blocks/logic.js"></script>
-      <script src="../blockly/blocks/loops.js"></script>
-      <script src="../blockly/blocks/math.js"></script>
-      <script src="../blockly/blocks/text.js"></script>
-      <script src="../blockly/blocks/lists.js"></script>
-      <script src="../blockly/blocks/colour.js"></script>
-      <script src="../blockly/blocks/variables.js"></script>
-      <script src="../blockly/blocks/procedures.js"></script>
-      <script src="../blockly/blocks/thymio.js"></script>
-      <script src="../blockly/overrides/blockcolors.js"></script>
       <script src="js/thymio_blockly.js"></script>
-      <script src="js/blockly_override.js"></script>
       <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
     <body onload="start()">
       <!-- #overlay style.css:207 display:none can be changed in display:block with javascript to show it when needed -->
       <div id="overlay">
         <div id="overlay-msg">
-          <img src="../media/close.png" class="close-button">
+          <img src="media/close.png" class="close-button">
           <h1>Kann Thymio nicht finden!</h1>
           <div id="overlay-msg-content">
           <ul>
             <li>
               <p> <span>1.</span>Schließen Sie einen Thymio über das USB-Kabel/Dongle an Ihren Computer an.</p>
-              <img src="../media/dongle-icon.png" class="warnIcon">
+              <img src="media/dongle-icon.png" class="warnIcon">
             </li>
             <li>
               <p><span>2.</span> Stellen Sie sicher, dass Thymio Web Bridge läuft.</p>
-              <img src="../media/web-bridge-icon.png" class="warnIcon">
+              <img src="media/web-bridge-icon.png" class="warnIcon">
             </li>
           </ul>
           </div>
@@ -51,17 +29,17 @@
       <div id="tab-overlay">
         <div class="tabs tabs-full">
           <div id="appinfo">
-            <img src="../media/thymio-blockly-icon.png">
+            <img src="media/thymio-blockly-icon.png">
             <h3>Thymio Blockly</h3>
           </div>
-          
+
           <input id="tab1" type="radio" name="tabs" class="tab-input" checked />
           <label for="tab1" class="tab-label">Über</label>
           <input id="tab2" type="radio" name="tabs" class="tab-input" />
           <label for="tab2" class="tab-label">Autoren</label>
           <input id="tab3" type="radio" name="tabs" class="tab-input" />
           <label for="tab3" class="tab-label">Danke</label>
-          
+
           <div class="tabs-wrap">
             <div class="tab" id="tab1content">
               <h3>Thymio Blockly ist eine Umgebung für die interaktive Programmierung von Thymio-Roboter mit Blocky-Sprache.</h3>
@@ -110,19 +88,19 @@
               <input type="hidden" id="fileLoaded">
               <div class="input-file">
                 <label for="new-doc">
-                  <img class="top-option-btn" src="../media/new.svg" alt="Neu" title="Neu"/>
+                  <img class="top-option-btn" src="media/new.svg" alt="Neu" title="Neu"/>
                 </label>
                 <input id="new-doc" type="image" onclick="newDoc()" />
               </div>
               <div class="input-file">
                 <label for="open-doc">
-                  <img class="top-option-btn" src="../media/open.svg" alt="Öffnen" title="Öffnen"/>
+                  <img class="top-option-btn" src="media/open.svg" alt="Öffnen" title="Öffnen"/>
                 </label>
                 <input type="file" id="open-doc"/>
               </div>
               <div class="input-file">
                 <label for="save-doc">
-                  <img class="top-option-btn" src="../media/save.svg" alt="Speichern" title="Speichern"/>
+                  <img class="top-option-btn" src="media/save.svg" alt="Speichern" title="Speichern"/>
                 </label>
                 <input type="image" id="save-doc" onclick="saveFile()"/>
               </div>
@@ -131,13 +109,13 @@
             <div id="centerButtons">
               <div class="input-file">
                 <label for="play">
-                  <img class="top-option-btn" src="../media/play.svg" alt="Laden und ausführen" title="Laden und ausführen"/>
+                  <img class="top-option-btn" src="media/play.svg" alt="Laden und ausführen" title="Laden und ausführen"/>
                 </label>
                 <input type="button" id="play" onclick="run()"/>
               </div>
               <div class="input-file">
                 <label for="stop">
-                  <img class="top-option-btn" src="../media/stop.svg" alt="Stopp" title="Stopp"/>
+                  <img class="top-option-btn" src="media/stop.svg" alt="Stopp" title="Stopp"/>
                 </label>
                 <input type="button" id="stop" onclick="stop()"/>
               </div>
@@ -145,7 +123,7 @@
             <!-- END Center buttons - START right buttons -->
             <div id="rightButtons">
               <a id="info-btn" class="top-option-btn" href="" target="_blank">
-                <img src="../media/info.svg" alt="Hilfe" title="Hilfe"/>
+                <img src="media/info.svg" alt="Hilfe" title="Hilfe"/>
               </a>
               <ul class="lang">
               	<a href="thymio_blockly.de.html">
@@ -562,7 +540,7 @@
           <category name="Subroutinen" colour="290" custom="PROCEDURE"></category>
         </xml>
         <div id="logo-zone">
-          <img id="thymio-logo" src="../media/logo-thymio.png">
+          <img id="thymio-logo" src="media/logo-thymio.png">
           <h1 id="logo-text">Blockly</h1>
         </div>
         <div id="aseba-zone">
