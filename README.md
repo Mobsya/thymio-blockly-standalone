@@ -1,6 +1,8 @@
 Thymio Blockly Standalone
 =========================
 
+[![Build Status](https://dev.azure.com/mobsya/Thymio%20Software%20Suite/_apis/build/status/Mobsya.thymio-blockly-standalone?branchName=master)](https://dev.azure.com/mobsya/Thymio%20Software%20Suite/_build/latest?definitionId=5&branchName=master)
+
 
 Usage
 =====
