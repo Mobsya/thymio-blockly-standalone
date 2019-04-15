@@ -4,7 +4,7 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
 
-import {createClient, Node, NodeStatus} from '@mobsya/thymio-api'
+import {createClient, Node, NodeStatus, ProgrammingLanguage} from '@mobsya/thymio-api'
 
 var workspace = null;
 
@@ -158,6 +158,8 @@ function update_overlay_status() {
 function updateCode() {
     var output = $('#importExport')[0];
     output.value = Blockly['AESL'].workspaceToCode(workspace);
+    if(selectedNode)
+        selectedNode.setScratchPad(output.value, ProgrammingLanguage.Aseba)
 }
 
 async function send_code(code) {
