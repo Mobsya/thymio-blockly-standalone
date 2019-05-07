@@ -167,6 +167,7 @@ textarea#importExport {
     box-sizing: border-box;
     width: 100%;
     max-width: 100%;
+    max-height: 600px;
 }
 
 /* blockly toolbox style overide */
@@ -562,6 +563,36 @@ div#aseba-zone {
   }
 
 
+}
+
+/* Add connection status */
+
+p#th-connection-info {
+    display: inline-block;
+    line-height: 40px;
+    vertical-align: top;
+    margin: 0 10px 0 0;
+    background: #eeeeee;
+    padding: 0 10px;
+    border-radius: 5px;
+    font-size:12px;
+    color:#666;
+}
+
+span#th-connection-status {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 10px 0;
+}
+
+#th-connection-status.connected {
+  background: #79eb9f;
+}
+
+#th-connection-status.disconnected {
+  background: #ef5e47;
 }
 
 /* Vincent END */

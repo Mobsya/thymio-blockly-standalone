@@ -149,10 +149,13 @@ function start() {
 }
 
 function update_overlay_status() {
-    if(selectedNode && selectedNode.isReady)
-        $('#overlay').hide()
-    else
-        $('#overlay').show()
+    if(selectedNode && selectedNode.isReady) {
+        $('#th-connection-info').hide()
+        $('#th-connection-status').removeClass("disconnected").addClass("connected") 
+    } else {
+        $('#th-connection-info').show()
+        $('#th-connection-status').removeClass("connected").addClass("disconnected")
+    }
 }
 
 function updateCode() {
