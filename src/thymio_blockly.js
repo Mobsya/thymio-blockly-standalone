@@ -1,4 +1,6 @@
 var Blockly = require('@mobsya/node-blockly/browser');
+var alertify = require('alertifyjs');
+
 
 import $ from 'jquery';
 window.jQuery = $;
@@ -67,15 +69,36 @@ function start() {
         rtl: false,
         scrollbars: true,
         toolbox: $('#toolbox')[0],
-        zoom: {
-            controls: true,
-            wheel: true,
-            startScale: 1.0,
-            maxScale: 4,
-            minScale: .25,
-            scaleSpeed: 1.1
-        },
+                               zoom: {
+                                   controls: true,
+                               wheel: true,
+                               startScale: 1.0,
+                               maxScale: 4,
+                               minScale: .25,
+                               scaleSpeed: 1.1
+                               },
     });
+
+    Blockly.alert = function(message, callback) {
+        console.log('Alert: ' + message);
+        alertify.alert("Blockly", message, callback);
+    };
+
+    /** Override Blockly.confirm() with custom implementation. */
+    Blockly.confirm = function(message, callback) {
+        alertify.confirm("Blockly", message, () =>  callback(true), () =>  callback(false));
+    };
+
+    /** Override Blockly.prompt() with custom implementation. */
+    Blockly.prompt = function(message, defaultValue, callback) {
+        console.log('Prompt: ' + message);
+        alertify.prompt("Blockly", message, defaultValue
+        , function(evt, value) { callback(value) }
+        , function() { callback(null) });
+    }
+
+
+
     workspace.addChangeListener(updateCode);
     //to load code and block from a aesl file using drag and drop
     var importExport = $('#importExport');
