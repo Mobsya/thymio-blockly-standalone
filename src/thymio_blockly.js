@@ -136,8 +136,9 @@ function start() {
     };
     //to load code and block from a aesl file
     let input = $("#open-doc");
-    input.onchange = function() {
-        var fileToLoad = $("#open-doc").files[0];
+    input.on('change', function () {
+        var fileToLoad = $("#open-doc").prop('files')[0];
+        console.log(fileToLoad)
         if (fileToLoad != null) {
             newDoc();
             var fileReader = new FileReader();
@@ -146,7 +147,7 @@ function start() {
             }
             fileReader.readAsText(fileToLoad, "UTF-8");
         }
-    }
+    })
     //to close overlay
     $('#overlay-msg').click( function() {
         $('#overlay').hide()
@@ -228,7 +229,7 @@ function newDoc() {
 // https://www.npmjs.com/package/file-saver
 //https://api.jquery.com/jQuery.parseXML/
 function saveFile() {
-    var code = $("#importExport").value
+    var code = $("#importExport").val()
     var xml = Blockly.Xml.workspaceToDom(workspace);
     var textToSave = '<!DOCTYPE aesl-source>\n<network>\n\n<!--list of global events-->\n\n<!--list of constants-->\n\n<!--show keywords state-->\n<keywords flag="true"/>\n\n\<!--node thymio-II-->\n<node nodeId="51938" name="thymio-II">\n\n' +
         code + '\n\n<toolsPlugins>\n<ThymioBlockly>\n' +
