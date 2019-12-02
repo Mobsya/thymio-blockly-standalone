@@ -8,20 +8,20 @@
       <link rel="stylesheet" type="text/css" href="css/alertify.min.css" />
       <link rel="stylesheet" type="text/css" href="css/alertify.default.min.css" />
     </head>
-    <body>
+    <body onload="start()">
     <!-- #overlay style.css:207 display:none can be changed in display:block with javascript to show it when needed 
       <div id="overlay">
         <div id="overlay-msg">
           <img src="media/close.png" class="close-button">
-          <h1>Cannot find Thymio !</h1>
+          <h1>Nie można znaleźć Thymio !</h1>
           <div id="overlay-msg-content">
           <ul>
             <li>
-              <p><span>1.</span>Connect Thymio to your computer with the USB cable or the Wireless dongle.</p>
+              <p><span>1.</span>Podłącz Thymio do komputera za pomocą kabla USB lub  dongla Wi-Fi</p>
               <img src="media/dongle-icon.png" class="warnIcon">
             </li>
             <li>
-              <p><span>2.</span> Make sure that Thymio Web Bridge is active.</p>
+              <p><span>2.</span>Upewnij się, że Thymio Web Bridge jest aktywny</p>
               <img src="media/web-bridge-icon.png" class="warnIcon">
             </li>
           </ul>
@@ -36,21 +36,21 @@
           </div>
 
           <input id="tab1" type="radio" name="tabs" class="tab-input" checked />
-          <label for="tab1" class="tab-label">About</label>
+          <label for="tab1" class="tab-label">O</label>
           <input id="tab2" type="radio" name="tabs" class="tab-input" />
-          <label for="tab2" class="tab-label">Authors</label>
+          <label for="tab2" class="tab-label">Autorzy</label>
           <input id="tab3" type="radio" name="tabs" class="tab-input" />
-          <label for="tab3" class="tab-label">Thanks to</label>
+          <label for="tab3" class="tab-label">Podziękowania dla</label>
 
           <div class="tabs-wrap">
             <div class="tab" id="tab1content">
-              <h3>Thymio Blockly is an environment for interactively programming Thymio robots with Blockly language.</h3>
-              <p>More information about <a target="_blank" href="https://developers.google.com/blockly/">Blockly</a> language.</p>
-              <p>More information about <a target="_blank" href="https://www.thymio.org/en:blocklyprogramming">Thymio Blockly.</a></p>
-              <p>Thymio Blockly is based on the Aseba technology, learn more on <a target="_blank" href="http://www.aseba.io">aseba.io</a></p>
+              <h3>Thymio Blockly to środowisko programowania robotów Thymio za pomocą języka Blockly.</h3>
+              <p>Więcej informacji o języku  <a target="_blank" href="https://developers.google.com/blockly/">Blockly</a></p>
+              <p>Więcej informacji o języku <a target="_blank" href="https://www.thymio.org/en:blocklyprogramming">Thymio Blockly.</a></p>
+              <p>Thymio Blockly jest oparte o technologie Aseba, naucz się więcej o <a target="_blank" href="http://www.aseba.io">aseba.io</a></p>
             </div>
             <div class="tab" id="tab2content">
-              <h3>Thymio Blockly authors</h3>
+              <h3>Autorzy Thymio Blockly</h3>
               <ul>
                 <li>Fabian Hahn</li>
                 <li>Elisa Bernardoni</li>
@@ -58,7 +58,7 @@
                 <li>Maria María Beltrán</li>
                 <li>Stéphane Magnenat</li>
               </ul>
-              <h3>Based on Aseba by</h3>
+              <h3>Na podstawie Aseby autorstwa</h3>
               <ul>
                 <li>Stéphane Magnenat</li>
                 <li>David Sherman</li>
@@ -73,12 +73,12 @@
                 <li>EPFL-Mobots</li>
                 <li>Mobsya</li>
                 <li>Inria</li>
-                <li>Other translators</li>
+                <li>Inni tłumacze</li>
               </ul>
             </div>
           </div>
           <p class="button-container">
-            <a class="button" id="closeAbout" href="#">Close</a>
+            <a class="button" id="closeAbout" href="#">Zamknij</a>
           </p>
         </div>
       </div>
@@ -90,19 +90,19 @@
               <input type="hidden" id="fileLoaded">
                 <div class="input-file">
                 <label for="new-doc">
-                  <img class="top-option-btn" src="media/new.svg" alt="New" title="New"/>
+                  <img class="top-option-btn" src="media/new.svg" alt="Nowy" title="Nowy"/>
                 </label>
                 <input id="new-doc" type="image"/>
                 </div>
                 <div class="input-file">
                   <label for="open-doc">
-                    <img class="top-option-btn" src="media/open.svg" alt="Open" title="Open"/>
+                    <img class="top-option-btn" src="media/open.svg" alt="Otwórz" title="Otwórz"/>
                   </label>
                   <input type="file" id="open-doc"/>
                 </div>
                 <div class="input-file">
                   <label for="save-doc">
-                    <img class="top-option-btn" src="media/save.svg" alt="Save" title="Save"/>
+                    <img class="top-option-btn" src="media/save.svg" alt="Zapisz" title="Zapisz"/>
                   </label>
                   <input type="image" id="save-doc"/>
                 </div>
@@ -111,13 +111,13 @@
               <div id="centerButtons">
                 <div class="input-file">
                   <label for="play">
-                    <img class="top-option-btn" src="media/play.svg" alt="Load & Run" title="Load & Run"/>
+                    <img class="top-option-btn" src="media/play.svg" alt="Załaduj i uruchom" title="Załaduj i uruchom"/>
                   </label>
                   <input type="button" id="play"/>
                 </div>
                 <div class="input-file">
                   <label for="stop">
-                    <img class="top-option-btn" src="media/stop.svg" alt="New" title="Stop"/>
+                    <img class="top-option-btn" src="media/stop.svg" alt="Zatrzymaj" title="Zatrzymaj"/>
                   </label>
                   <input type="button" id="stop"/>
                 </div>
@@ -125,10 +125,13 @@
               <!-- END Center buttons - START right buttons -->
               <div id="rightButtons">
                 <a id="info-btn" class="top-option-btn" href="" target="_blank">
-                  <img src="media/info.svg" alt="Help" title="Help"/>
+                  <img src="media/info.svg" alt="Pomoc" title="Pomoc"/>
                 </a>
                 <ul class="lang">
-					<a href="thymio_blockly.en.html">
+					<a href="thymio_blockly.pl.html">
+						<li>PL</li>
+					</a>
+                	<a href="thymio_blockly.en.html">
 						<li>EN</li>
 					</a>
 					<a href="thymio_blockly.fr.html">
@@ -143,9 +146,6 @@
 					<a href="thymio_blockly.es.html">
 						<li>ES</li>
 					</a>
-					<a href="thymio_blockly.pl.html">
-						<li>PL</li>
-					</a>
                 </ul>
               </div>
               <!-- END right buttons -->
@@ -153,7 +153,7 @@
           </div>
           <div id="blocklyDiv"></div>
           <xml id="toolbox" style="display: none">
-            <category name="Events" colour="10">
+            <category name="Zdarzenia" colour="10">
               <block type="thymio_event_button"></block>
               <block type="thymio_event_prox"></block>
               <block type="thymio_event_prox_ground"></block>
@@ -204,7 +204,7 @@
                 <field name="EVENT">prox</field>
               </block>
             </category>
-            <category name="Actuators" colour="60">
+            <category name="Siłowniiki" colour="60">
               <block type="thymio_motors_stop"></block>
               <block type="thymio_motors_start">
                 <value name="SPEED">
@@ -259,7 +259,7 @@
                 </value>
               </block>
             </category>
-            <category name="LEDs" colour="160">
+            <category name="LEDy" colour="160">
               <block type="thymio_led_off"></block>
               <block type="thymio_led"></block>
               <block type="thymio_led_rgb">
@@ -417,7 +417,7 @@
                 </value>
               </block>
             </category>
-            <category name="Sensors" colour="230">
+            <category name="Czujniki" colour="230">
               <block type="thymio_button_pressed"></block>
               <block type="thymio_prox_check"></block>
               <block type="thymio_prox_ground_check"></block>
@@ -442,7 +442,7 @@
               </block>
             </category>
             <sep></sep>
-            <category name="Logic" colour="210">
+            <category name="Logika" colour="210">
               <block type="controls_if">
                 <value name="IF0">
                   <shadow type="logic_boolean">
@@ -490,7 +490,7 @@
               </block>
               <block type="logic_boolean"></block>
             </category>
-            <category name="Loops" colour="120">
+            <category name="Pętle" colour="120">
               <block type="controls_repeat">
                 <field name="TIMES">10</field>
               </block>
@@ -506,7 +506,7 @@
                 <field name="TO">9</field>
               </block>
             </category>
-            <category name="Math" colour="230">
+            <category name="Matematyka" colour="230">
               <block type="math_number"></block>
               <block type="thymio_arithmetic">
                 <value name="A">
@@ -541,8 +541,8 @@
               </block>
             </category>
             <sep></sep>
-            <category name="Variables" colour="330" custom="VARIABLE"></category>
-            <category name="Subroutines" colour="290" custom="PROCEDURE"></category>
+            <category name="Zmienne" colour="330" custom="VARIABLE"></category>
+            <category name="Podprogramy" colour="290" custom="PROCEDURE"></category>
         	</xml>
           <div id="logo-zone">
           <img id="thymio-logo" src="media/logo-thymio.png">
@@ -551,7 +551,7 @@
           <div id="aseba-zone">
               <textarea id="importExport" style="/*width: 26%; */ height: 36em" readonly="readonly"></textarea>
               <div id="showFileName"></div>
-              <p id="th-connection-info"> Thymio is not connected </p>
+              <p id="th-connection-info"> Thymio nie jest podłączony </p>
               <span id="th-connection-status" class="disconnected"></span>
           </div>
     </body>
