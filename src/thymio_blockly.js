@@ -1,4 +1,4 @@
-var Blockly = require('@mobsya/node-blockly/browser');
+var Blockly = require('@mobsya-association/node-blockly/browser');
 var alertify = require('alertifyjs');
 
 

@@ -1,5 +1,5 @@
 'use strict';
-var Blockly = require('@mobsya/node-blockly/browser');
+var Blockly = require('@mobsya-association/node-blockly/browser');
 
 Blockly.Names.prototype.safeName_ = function(name) {
   if (!name) {
