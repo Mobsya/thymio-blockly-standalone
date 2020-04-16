@@ -8,6 +8,20 @@
       <link rel="stylesheet" type="text/css" href="css/alertify.min.css" />
       <link rel="stylesheet" type="text/css" href="css/alertify.default.min.css" />
     </head>
+    <script type="text/javascript">
+        // Adding uuid information to change language menu links
+        document.addEventListener('DOMContentLoaded', function() {
+
+        const add_info = window.location.href.split(/(.html)/)[2]
+          var container = document.getElementsByClassName("lang");
+          for (var i = 0; i < container.length; i++) {
+            var links = container[i].getElementsByTagName('a');
+            for (var j = 0; j < links.length; j++) {  
+               links[j].href += add_info;
+             }
+          }
+        }, false);
+    </script>
     <body>
     <!-- #overlay style.css:207 display:none can be changed in display:block with javascript to show it when needed 
       <div id="overlay">
