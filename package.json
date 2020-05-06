@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.0.0",
-    "@mobsya-association/node-blockly": "1.4.2",
+    "@mobsya-association/node-blockly": "1.4.3",
     "@mobsya/thymio-api": "^0.10.1",
     "alertifyjs": "^1.11.4",
     "babel-loader": "^8.0.2",
