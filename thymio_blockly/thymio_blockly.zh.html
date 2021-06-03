@@ -27,7 +27,7 @@
       <div id="overlay">
         <div id="overlay-msg">
           <img src="media/close.png" class="close-button">
-          <h1>Cannot find Thymio !</h1>
+          <h1>未发现 Thymio 机器人!</h1>
           <div id="overlay-msg-content">
           <ul>
             <li>
@@ -50,21 +50,21 @@
           </div>
 
           <input id="tab1" type="radio" name="tabs" class="tab-input" checked />
-          <label for="tab1" class="tab-label">About</label>
+          <label for="tab1" class="tab-label">关于</label>
           <input id="tab2" type="radio" name="tabs" class="tab-input" />
-          <label for="tab2" class="tab-label">Authors</label>
+          <label for="tab2" class="tab-label">编制</label>
           <input id="tab3" type="radio" name="tabs" class="tab-input" />
-          <label for="tab3" class="tab-label">Thanks to</label>
+          <label for="tab3" class="tab-label">致谢</label>
 
           <div class="tabs-wrap">
             <div class="tab" id="tab1content">
-              <h3>Thymio Blockly is an environment for interactively programming Thymio robots with Blockly language.</h3>
-              <p>More information about <a target="_blank" href="https://developers.google.com/blockly/">Blockly</a> language.</p>
-              <p>More information about <a target="_blank" href="https://www.thymio.org/en:blocklyprogramming">Thymio Blockly.</a></p>
-              <p>Thymio Blockly is based on the Aseba technology, learn more on <a target="_blank" href="http://www.aseba.io">aseba.io</a></p>
+              <h3>Thymio Blockly 是一个使用Blockly语言编程Thymio机器人的交互式环境。</h3>
+              <p>更多关于 <a target="_blank" href="https://developers.google.com/blockly/">Blockly</a> 编程.</p>
+              <p>更多关于 <a target="_blank" href="https://www.thymio.org/en:blocklyprogramming">Thymio Blockly.</a></p>
+              <p>Thymio Blockly 基于 Aseba 技术, 了解更多： <a target="_blank" href="http://www.aseba.io">aseba.io</a></p>
             </div>
             <div class="tab" id="tab2content">
-              <h3>Thymio Blockly authors</h3>
+              <h3>Thymio Blockly 作者</h3>
               <ul>
                 <li>Fabian Hahn</li>
                 <li>Elisa Bernardoni</li>
@@ -72,7 +72,7 @@
                 <li>Maria María Beltrán</li>
                 <li>Stéphane Magnenat</li>
               </ul>
-              <h3>Based on Aseba by</h3>
+              <h3>基于 Aseba </h3>
               <ul>
                 <li>Stéphane Magnenat</li>
                 <li>David Sherman</li>
@@ -87,12 +87,12 @@
                 <li>EPFL-Mobots</li>
                 <li>Mobsya</li>
                 <li>Inria</li>
-                <li>Other translators</li>
+                <li>其他译者</li>
               </ul>
             </div>
           </div>
           <p class="button-container">
-            <a class="button" id="closeAbout" href="#">Close</a>
+            <a class="button" id="closeAbout" href="#">关闭</a>
           </p>
         </div>
       </div>
@@ -104,19 +104,19 @@
               <input type="hidden" id="fileLoaded">
                 <div class="input-file">
                 <label for="new-doc">
-                  <img class="top-option-btn" src="media/new.svg" alt="New" title="New"/>
+                  <img class="top-option-btn" src="media/new.svg" alt="New" title="新建"/>
                 </label>
                 <input id="new-doc" type="image"/>
                 </div>
                 <div class="input-file">
                   <label for="open-doc">
-                    <img class="top-option-btn" src="media/open.svg" alt="Open" title="Open"/>
+                    <img class="top-option-btn" src="media/open.svg" alt="Open" title="打开"/>
                   </label>
                   <input type="file" id="open-doc"/>
                 </div>
                 <div class="input-file">
                   <label for="save-doc">
-                    <img class="top-option-btn" src="media/save.svg" alt="Save" title="Save"/>
+                    <img class="top-option-btn" src="media/save.svg" alt="Save" title="保存"/>
                   </label>
                   <input type="image" id="save-doc"/>
                 </div>
@@ -125,13 +125,13 @@
               <div id="centerButtons">
                 <div class="input-file">
                   <label for="play">
-                    <img class="top-option-btn" src="media/play.svg" alt="Load & Run" title="Load & Run"/>
+                    <img class="top-option-btn" src="media/play.svg" alt="Load & Run" title="加载并运行"/>
                   </label>
                   <input type="button" id="play"/>
                 </div>
                 <div class="input-file">
                   <label for="stop">
-                    <img class="top-option-btn" src="media/stop.svg" alt="New" title="Stop"/>
+                    <img class="top-option-btn" src="media/stop.svg" alt="New" title="停止"/>
                   </label>
                   <input type="button" id="stop"/>
                 </div>
@@ -139,7 +139,7 @@
               <!-- END Center buttons - START right buttons -->
               <div id="rightButtons">
                 <a id="info-btn" class="top-option-btn" href="" target="_blank">
-                  <img src="media/info.svg" alt="Help" title="Help"/>
+                  <img src="media/info.svg" alt="Help" title="帮助"/>
                 </a>
                 <ul class="lang">
 					<a href="thymio_blockly.zh.html">
@@ -170,7 +170,7 @@
           </div>
           <div id="blocklyDiv"></div>
           <xml id="toolbox" style="display: none">
-            <category name="Events" colour="10">
+            <category name="事件" colour="10">
               <block type="thymio_event_button"></block>
               <block type="thymio_event_prox"></block>
               <block type="thymio_event_prox_ground"></block>
@@ -221,7 +221,7 @@
                 <field name="EVENT">prox</field>
               </block>
             </category>
-            <category name="Actuators" colour="60">
+            <category name="执行器" colour="60">
               <block type="thymio_motors_stop"></block>
               <block type="thymio_motors_start">
                 <value name="SPEED">
@@ -276,7 +276,7 @@
                 </value>
               </block>
             </category>
-            <category name="LEDs" colour="160">
+            <category name="灯光" colour="160">
               <block type="thymio_led_off"></block>
               <block type="thymio_led"></block>
               <block type="thymio_led_rgb">
@@ -434,7 +434,7 @@
                 </value>
               </block>
             </category>
-            <category name="Sensors" colour="230">
+            <category name="传感器" colour="230">
               <block type="thymio_button_pressed"></block>
               <block type="thymio_prox_check"></block>
               <block type="thymio_prox_ground_check"></block>
@@ -459,7 +459,7 @@
               </block>
             </category>
             <sep></sep>
-            <category name="Logic" colour="210">
+            <category name="逻辑" colour="210">
               <block type="controls_if">
                 <value name="IF0">
                   <shadow type="logic_boolean">
@@ -507,7 +507,7 @@
               </block>
               <block type="logic_boolean"></block>
             </category>
-            <category name="Loops" colour="120">
+            <category name="循环控制" colour="120">
               <block type="controls_repeat">
                 <field name="TIMES">10</field>
               </block>
@@ -523,7 +523,7 @@
                 <field name="TO">9</field>
               </block>
             </category>
-            <category name="Math" colour="230">
+            <category name="数学运算" colour="230">
               <block type="math_number"></block>
               <block type="thymio_arithmetic">
                 <value name="A">
@@ -558,8 +558,8 @@
               </block>
             </category>
             <sep></sep>
-            <category name="Variables" colour="330" custom="VARIABLE"></category>
-            <category name="Subroutines" colour="290" custom="PROCEDURE"></category>
+            <category name="变量" colour="330" custom="VARIABLE"></category>
+            <category name="函数" colour="290" custom="PROCEDURE"></category>
         	</xml>
           <div id="logo-zone">
           <img id="thymio-logo" src="media/logo-thymio.png">
@@ -568,7 +568,7 @@
           <div id="aseba-zone">
               <textarea id="importExport" style="/*width: 26%; */ height: 36em" readonly="readonly"></textarea>
               <div id="showFileName"></div>
-              <p id="th-connection-info"> Thymio is not connected </p>
+              <p id="th-connection-info"> Thymio 未连接 </p>
               <span id="th-connection-status" class="disconnected"></span>
           </div>
     </body>
