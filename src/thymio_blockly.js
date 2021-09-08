@@ -6,7 +6,7 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
 
-import {createClient, Node, NodeStatus, ProgrammingLanguage} from '@mobsya/thymio-api'
+import {createClient, Node, NodeStatus, ProgrammingLanguage} from '@mobsya-association/thymio-api'
 
 var workspace = null;
 
@@ -26,10 +26,11 @@ $().ready(function() {
     }
     preferredNodeId = params["device"];
     const connectionUrl = params["ws"] || "ws://localhost:8597"
+    const password = params["pass"] || ""
     console.log(`${connectionUrl} : ${preferredNodeId}`)
 
     //TODO: handle switch deconnection
-    client = createClient(connectionUrl);
+    client = createClient(connectionUrl, password);
     client.onNodesChanged = async (nodes) => {
         //Iterate over the nodes
         for (let node of nodes) {
